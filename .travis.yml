@@ -1,0 +1,56 @@
+language: python
+dist: xenial
+matrix:
+  allow_failures:
+    - os: windows
+    - os: osx
+  include:
+    - python: 3.7
+      env:
+        - TOX_ENV=py37
+    - os: osx
+      language: generic
+      python: 3.7
+      env:
+        - TOX_ENV=py37
+    - os: windows
+      language: sh
+      python: 3.7
+      before_install:
+        - choco install python --version=3.7.5
+        - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
+        - python -m pip install --upgrade pip wheel tox
+      env:
+        - TOX_ENV=py37
+    - python: 3.5
+      env:
+        - TOX_ENV=py35
+    - python: 3.6
+      env:
+        - TOX_ENV=py36
+    - python: 3.8
+      env:
+        - TOX_ENV=py38
+    - python: 3.6
+      env:
+        - TOX_ENV=pypy3.6
+    - python: 3.6
+      env:
+        - TOX_ENV=check-format
+    - python: 3.6
+      env:
+        - TOX_ENV=flake8
+    - python: 3.6
+      env:
+        - TOX_ENV=bandit
+    - python: 3.6
+      env:
+        - TOX_ENV=publish-coverage
+        - secure: "AHqwDFNNRqwXipvdK/qsQlQxeSws/5wzXg6zYCLL68tLr47dSeCGEiBzDHaZTmPnD3EuRe2o3g3EoB9L+6kElpzd9UfgiXKaKafQqMI12qNRkhgPURAvHmepSfu4qRSUZa3qYE18tCtcD3QJRwBlETQT5czucCM9VF3wWHg3DDWQ/lGlBgpLN/nTMY9xjsWNKjkz6A8JElWokAkKzcdF1zYC5lmyBMe6QiTJIY1b5UAz2/kFO0TS+wl9hNebnIYWucubY8NzuIxpRwpri2/wtIBGYUbwkU0zbgUurTcknZGnGnpkxgLWUs/c4+JjMSHCprzaxwBt9cj/aY1jPZ3Y2SiI8ssQxFAdxeG4xo8gv1E+hCwq90LcpDuyNeMmssIwA7xiOX7fncyj0tI1Ndtfy1Obiz/Mk3MWZEgXLwPozoXIhszu3JskOyK1B1Pv6WyO9Miyk0s1liTpqwPIi7xQhdSo5ExBKp4IxhtsC+x5WR3CkxRVgXyOVCKdfwEID3uDZle/NqrpKnDU9BQtYSUlLbqajpH/R3uogF4Ll8FZUEnH6re1fkCY7fbOrxqveIbtOmzQyyO4eU3uSa8SodUOKhGNxNqd3fAZz+STMN7m74vrZ55qYQ0C0jndEZihTGv5SPu2ui3T8JzN5XPlZw9FUOiIGs8hrMR8Ua772zvfrfA="
+    - python: 3.6
+      env:
+        - TOX_ENV=docs
+install:
+  - pip install --upgrade tox
+script:
+  - tox -e $TOX_ENV
