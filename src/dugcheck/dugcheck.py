@@ -19,7 +19,7 @@ class Dugcheck(object):
         self.logger.setLevel(logging.INFO)
         CORS(self.app)
 
-    def question(self, question_id):
+    def question(self, question_id):  # noqa: C901
         """Wrapper.
         """
         # register a route for question_id and let the frontend hit
