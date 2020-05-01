@@ -1,14 +1,8 @@
-# encoding=utf-8
-import logging
-
-import pytest
 from dugcheck import Dugcheck
-
-logger = logging.getLogger(__name__)
 
 dug = Dugcheck()
 
-@dug.question("question-id")
+@dug.question("822b757a")
 def solution_251421(request):
     return {
         "max": 3
