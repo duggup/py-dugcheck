@@ -50,7 +50,7 @@ class Dugcheck(object):
 
         return foo
 
-    def run(self, host="0.0.0.0", port="3002", debug=True):
+    def run(self, host="0.0.0.0", port=3002):
         http_server = WSGIServer((host, port), self.app)
         self.logger.info(f"server running at: http://{host}:{port}")
         http_server.serve_forever()
