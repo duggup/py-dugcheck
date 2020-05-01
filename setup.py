@@ -47,7 +47,5 @@ setup(
         "Topic :: Software Development :: Testing",
     ],
     python_requires=">=3.4",
-    install_requires=[
-        "flask>=1.1.2"
-    ],
+    install_requires=["flask==1.1.2", "Flask-Cors==3.0.8", "gevent==20.4.0"],
 )

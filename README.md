@@ -5,3 +5,26 @@ py-dugcheck
 ---
 
 py-dugcheck is a Python based code evaluator for [Duggup's Coding Questions](https://duggup.com/q).
+
+# Setting it up
+
+```
+pip install dugcheck
+```
+
+# Coding solution for the question `max-number`
+
+```
+from dugcheck import Dugcheck
+
+dug = Dugcheck()
+
+@dug.question("max-number")
+def solution_max_number(inp):
+    max_number = max(inp["numbers"])
+    return {
+        "max": max_number
+    }
+
+dug.run(host="0.0.0.0", port=3003)
+```
