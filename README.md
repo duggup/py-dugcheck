@@ -6,7 +6,7 @@ py-dugcheck
 
 py-dugcheck is a Python based code evaluator for [Duggup's Coding Questions](https://duggup.com/q).
 
-# Setting it up
+# Installing
 
 ```
 pip install dugcheck
@@ -14,7 +14,7 @@ pip install dugcheck
 
 # Coding solution for the question `max-number`
 
-```
+```py
 from dugcheck import Dugcheck
 
 dug = Dugcheck()
